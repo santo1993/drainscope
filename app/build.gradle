@@ -17,7 +17,7 @@ android {
     signingConfigs {
         release {
             // filled from the environment by the release workflow
-            if (System.getenv('KEYSTORE_FILE')) {
+            if (System.getenv('KEYSTORE_FILE') && file(System.getenv('KEYSTORE_FILE')).exists()) {
                 storeFile file(System.getenv('KEYSTORE_FILE'))
                 storePassword System.getenv('KEYSTORE_PASSWORD')
                 keyAlias System.getenv('KEY_ALIAS')
@@ -29,7 +29,7 @@ android {
     buildTypes {
         release {
             minifyEnabled false
-            if (System.getenv('KEYSTORE_FILE')) {
+            if (System.getenv('KEYSTORE_FILE') && file(System.getenv('KEYSTORE_FILE')).exists()) {
                 signingConfig signingConfigs.release
             }
         }

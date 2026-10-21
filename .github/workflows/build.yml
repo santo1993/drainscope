@@ -33,12 +33,12 @@ jobs:
           KEYSTORE_B64: ${{ secrets.KEYSTORE_B64 }}
         run: |
           if [ -n "$KEYSTORE_B64" ]; then
-            echo "$KEYSTORE_B64" | base64 -d > keystore.jks
+            echo "$KEYSTORE_B64" | base64 -d > "$GITHUB_WORKSPACE/keystore.jks"
           fi
 
       - name: Build APK
         env:
-          KEYSTORE_FILE: ${{ secrets.KEYSTORE_B64 != '' && 'keystore.jks' || '' }}
+          KEYSTORE_FILE: ${{ github.workspace }}/keystore.jks
           KEYSTORE_PASSWORD: ${{ secrets.KEYSTORE_PASSWORD }}
           KEY_ALIAS: ${{ secrets.KEY_ALIAS }}
           KEY_PASSWORD: ${{ secrets.KEY_PASSWORD }}
