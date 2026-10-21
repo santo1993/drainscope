@@ -1,0 +1,25 @@
+# build output
+build/
+.gradle/
+.deps/
+local.properties
+*.apk
+*.idsig
+*.keystore
+*.jks
+
+# the on-device toolchain cache
+.harness/
+
+# editors
+.idea/
+*.iml
+.vscode/
+
+# python
+__pycache__/
+*.pyc
+
+# os
+.DS_Store
+.keys/
